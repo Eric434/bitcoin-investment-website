@@ -1,5 +1,3 @@
-"use client"
-
 import { redirect } from "next/navigation"
 import { createClient } from "@/lib/supabase/server"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
@@ -7,6 +5,7 @@ import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { ArrowLeft, Copy, QrCode, Bitcoin, Wallet } from "lucide-react"
 import Link from "next/link"
+import { CopyAddressButton } from "@/components/copy-address-button"
 
 export default async function CryptoDepositPage() {
   const supabase = await createClient()
@@ -153,25 +152,15 @@ export default async function CryptoDepositPage() {
                         <div className="flex-1 p-3 bg-slate-50 border rounded-lg font-mono text-sm break-all">
                           {wallet.address}
                         </div>
-                        <Button
-                          variant="outline"
-                          size="sm"
-                          onClick={() => navigator.clipboard.writeText(wallet.address)}
-                        >
-                          <Copy className="w-4 h-4" />
-                        </Button>
+                        <CopyAddressButton address={wallet.address} />
                       </div>
                     </div>
 
                     <div className="flex gap-3">
-                      <Button
-                        variant="outline"
-                        className="flex-1 bg-transparent"
-                        onClick={() => navigator.clipboard.writeText(wallet.address)}
-                      >
+                      <CopyAddressButton address={wallet.address} variant="outline" className="flex-1 bg-transparent">
                         <Copy className="w-4 h-4 mr-2" />
                         Copy Address
-                      </Button>
+                      </CopyAddressButton>
                       <Button variant="outline">
                         <QrCode className="w-4 h-4 mr-2" />
                         QR Code
