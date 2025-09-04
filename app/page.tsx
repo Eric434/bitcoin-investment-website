@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { CheckCircle, Shield, TrendingUp, Users, Award, Lock } from "lucide-react"
+import Link from "next/link"
 
 export default function BitcoinInvestmentPage() {
   return (
@@ -9,12 +10,12 @@ export default function BitcoinInvestmentPage() {
       {/* Header */}
       <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
         <div className="container flex h-16 items-center justify-between">
-          <div className="flex items-center space-x-2">
+          <Link href="/" className="flex items-center space-x-2">
             <div className="h-8 w-8 rounded-full bg-primary flex items-center justify-center">
               <span className="text-primary-foreground font-bold text-sm">₿</span>
             </div>
             <span className="font-bold text-xl">BitcoinPro</span>
-          </div>
+          </Link>
           <nav className="hidden md:flex items-center space-x-6">
             <a href="#plans" className="text-sm font-medium hover:text-primary transition-colors">
               Investment Plans
@@ -29,7 +30,9 @@ export default function BitcoinInvestmentPage() {
               Contact
             </a>
           </nav>
-          <Button>Get Started</Button>
+          <Link href="/auth/signup">
+            <Button>Get Started</Button>
+          </Link>
         </div>
       </header>
 
@@ -47,12 +50,16 @@ export default function BitcoinInvestmentPage() {
             investors. Start building your cryptocurrency portfolio today.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" className="text-lg px-8">
-              Start Investing Now
-            </Button>
-            <Button variant="outline" size="lg" className="text-lg px-8 bg-transparent">
-              View Investment Plans
-            </Button>
+            <Link href="/auth/signup">
+              <Button size="lg" className="text-lg px-8">
+                Start Investing Now
+              </Button>
+            </Link>
+            <Link href="#plans">
+              <Button variant="outline" size="lg" className="text-lg px-8 bg-transparent">
+                View Investment Plans
+              </Button>
+            </Link>
           </div>
         </div>
       </section>
@@ -120,7 +127,9 @@ export default function BitcoinInvestmentPage() {
                     <span className="text-sm">Mobile app access</span>
                   </li>
                 </ul>
-                <Button className="w-full">Choose Starter</Button>
+                <Link href="/auth/signup?plan=starter">
+                  <Button className="w-full">Choose Starter</Button>
+                </Link>
               </CardContent>
             </Card>
 
@@ -159,7 +168,9 @@ export default function BitcoinInvestmentPage() {
                     <span className="text-sm">Compound interest options</span>
                   </li>
                 </ul>
-                <Button className="w-full">Choose Professional</Button>
+                <Link href="/auth/signup?plan=professional">
+                  <Button className="w-full">Choose Professional</Button>
+                </Link>
               </CardContent>
             </Card>
 
@@ -195,7 +206,9 @@ export default function BitcoinInvestmentPage() {
                     <span className="text-sm">Exclusive market insights</span>
                   </li>
                 </ul>
-                <Button className="w-full">Choose Elite</Button>
+                <Link href="/auth/signup?plan=elite">
+                  <Button className="w-full">Choose Elite</Button>
+                </Link>
               </CardContent>
             </Card>
           </div>
@@ -300,16 +313,20 @@ export default function BitcoinInvestmentPage() {
             Join thousands of satisfied investors who trust BitcoinPro with their cryptocurrency investments
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" variant="secondary" className="text-lg px-8">
-              Create Account
-            </Button>
-            <Button
-              size="lg"
-              variant="outline"
-              className="text-lg px-8 border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary bg-transparent"
-            >
-              Schedule Consultation
-            </Button>
+            <Link href="/auth/signup">
+              <Button size="lg" variant="secondary" className="text-lg px-8">
+                Create Account
+              </Button>
+            </Link>
+            <Link href="/auth/login">
+              <Button
+                size="lg"
+                variant="outline"
+                className="text-lg px-8 border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary bg-transparent"
+              >
+                Login to Dashboard
+              </Button>
+            </Link>
           </div>
         </div>
       </section>
