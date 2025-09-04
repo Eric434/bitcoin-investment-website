@@ -1,10 +1,10 @@
-"use client"
 import { createClient } from "@/lib/supabase/server"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Users, DollarSign, TrendingUp, Activity, Settings, Bitcoin } from "lucide-react"
 import Link from "next/link"
+import { AdminSignOutButton } from "@/components/admin-sign-out-button"
 
 export default async function AdminDashboardPage() {
   const supabase = await createClient()
@@ -70,15 +70,7 @@ export default async function AdminDashboardPage() {
                   Settings
                 </Button>
               </Link>
-              <Button
-                variant="outline"
-                onClick={() => {
-                  document.cookie = "admin_session=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT"
-                  window.location.href = "/admin/auth/login"
-                }}
-              >
-                Sign Out
-              </Button>
+              <AdminSignOutButton />
             </div>
           </div>
         </div>
